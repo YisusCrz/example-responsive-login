@@ -18,7 +18,9 @@ class LoginPage extends StatelessWidget {
             body: DesktopLogin()
           );
         } else {
-          return MobileLogin();
+          return Scaffold(
+            body: MobileLogin()
+          );
         }
       },
     );
@@ -82,7 +84,7 @@ class _DesktopLoginRightSide extends StatelessWidget {
                   ),
                   SizedBox(height: 30,),
                   Container(
-                    width: 400,
+                    width: 300,
                     child: TextFormField(
                        decoration: InputDecoration(
                          hintText: 'Enter Username ...'
@@ -91,7 +93,7 @@ class _DesktopLoginRightSide extends StatelessWidget {
                   ),
                   SizedBox(height: 30,),
                   Container(
-                    width: 400,
+                    width: 300,
                     child: TextFormField(
                        decoration: InputDecoration(
                          hintText: 'Enter Password ...'
@@ -101,11 +103,11 @@ class _DesktopLoginRightSide extends StatelessWidget {
                   SizedBox(height: 50,),
                   Container(
                     height: 50,
-                    width: 400,
+                    width: 300,
                     child: MaterialButton(
                       elevation: 10,
                       color: Colors.blueAccent,
-                      child: Text('Login',
+                      child: Text('LOGIN',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20
@@ -211,8 +213,46 @@ class _DesktopLoginLeftSide extends StatelessWidget {
 class MobileLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Column(
+      children: [
+        _MobileLoginTop(),
+        SizedBox( height: 100 ),
+        Column()
+      ],
+    );
+  }
+}
+
+class _MobileLoginTop extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          height: 300,
+          width: double.infinity,
+          color: Colors.blueAccent,
+        ),
+        Positioned(
+          top: 50.0,
+          child: CircleWidget(),
+        ),
+        Positioned(
+          bottom: 50.0,
+          right: 0.0,
+          child: CircleWidget(),
+        ),
+        Positioned(
+          left: 0.0,
+          right: 0.0,
+          bottom: -70.0,
+          child: CircleAvatar(
+            radius: 90,
+            child: Icon(Icons.person, size: 120,),
+          ),
+        ),
+      ]
     );
   }
 }
