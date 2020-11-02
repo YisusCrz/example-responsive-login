@@ -86,6 +86,7 @@ class _DesktopLoginRightSide extends StatelessWidget {
                   Container(
                     width: 300,
                     child: TextFormField(
+                      enableSuggestions: true,
                        decoration: InputDecoration(
                          hintText: 'Enter Username ...'
                        ),
@@ -95,6 +96,7 @@ class _DesktopLoginRightSide extends StatelessWidget {
                   Container(
                     width: 300,
                     child: TextFormField(
+                      obscureText: true,
                        decoration: InputDecoration(
                          hintText: 'Enter Password ...'
                        ),
@@ -213,12 +215,78 @@ class _DesktopLoginLeftSide extends StatelessWidget {
 class MobileLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _MobileLoginTop(),
-        SizedBox( height: 100 ),
-        Column()
-      ],
+    return _MobileLoginCompleteStructure();
+  }
+}
+
+class _MobileLoginCompleteStructure extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          _MobileLoginTop(),
+          SizedBox( height: 100 ),
+          Text('Signin',
+            style: TextStyle( 
+              color: Colors.black, 
+              fontSize: 40 ,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+          SizedBox( height: 10, ),
+          Container(
+            height: 5,
+            width: 50,
+            color: Colors.blueAccent
+          ),
+          SizedBox( height: 30 ),
+          Container(
+            padding: EdgeInsets.all(20),
+            height: 250,
+            width: 300,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow()
+              ]
+            ),
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.person, size: 30),
+                    hintText: 'Enter Username ...'
+                  ),
+                ),
+                SizedBox( height: 20, ),
+                TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.lock, size: 30),
+                    hintText: 'Enter Password ...'
+                  ),
+                ),
+                SizedBox(height: 40,),
+                Container(
+                  height: 40,
+                  width: 200,
+                  child: MaterialButton(
+                    color: Colors.blueAccent,
+                    child: Text('LOGIN',
+                      style: TextStyle( color: Colors.white ),
+                    ),
+                    shape: StadiumBorder(),
+                    elevation: 10,
+                    onPressed: (){},
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox( height: 100 ),
+        ],
+      ),
     );
   }
 }
@@ -230,7 +298,7 @@ class _MobileLoginTop extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          height: 300,
+          height: 200,
           width: double.infinity,
           color: Colors.blueAccent,
         ),
